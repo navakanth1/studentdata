@@ -24,8 +24,9 @@ while True:
     print("4. Search record using  Roll number :")
     print("5. Update record with Roll no Number :")
     print("6. Delete using roll number:")
-    print("7. Total records :")
-    print("8. exit")
+    print("7. Average total record :")
+    print("8. Total records :")
+    print("9. exit")
 
     choice=int(input("Enter choice :"))
 
@@ -69,7 +70,7 @@ while True:
         getrollnum = input("Enter the roll number to get Update :")
         getName = input("Enter name :")
         getRollNum = input("Enter the Roll Number :")
-        getexam = input("Enter the exxam :")
+        getexam = input("Enter the exam :")
         gettotal = input("Enter the total records :")
 
 
@@ -85,13 +86,19 @@ while True:
         connection.commit()
         print("Data Deleted Successfully.")
 
+    elif choice==7:
+        result = connection.execute("select avg(total_records) from records")
+        for i in result:
+            print("Average total Mark :", i[0])
 
-    elif choice == 7:
+
+
+    elif choice == 8:
         result = connection.execute("select count(*) from records")
         for i in result:
             print("Total records Count :", i[0])
 
-    elif choice == 8:
+    elif choice == 9:
         break
 
     else:
